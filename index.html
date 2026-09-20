@@ -82,7 +82,16 @@ main {
   <span class="word">strangeday</span><span class="cursor">_</span>
 </div>
   <p class="line">Give us eight. We'll handle the rest.</p>
-  <a class="contact" href="mailto:hello@strangeday.space">talk to us</a>
+  <a class="contact" href="https://us05web.zoom.us/j/89901113714?pwd=ygnQWH9JhKXogIbDVxVUe9G1WHg891.1" onclick="ringDoorbell()">talk to us</a>
 </main>
+
+<script>
+  function ringDoorbell() {
+    fetch("https://strangeday-doorbell.g6799vfrr2.workers.dev/", {
+      method: "POST",
+      keepalive: true
+    });
+  }
+</script>
 </body>
 </html>
