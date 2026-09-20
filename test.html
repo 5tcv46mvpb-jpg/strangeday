@@ -134,18 +134,18 @@ main {
   allow="camera; microphone; fullscreen; speaker; display-capture"
 ></iframe>
 
-<p class="waiting"><span id="waiting">host notified.</span><span class="cursor">_</span></p>
+<span id="waiting">host notified</span>
     `;
 
     const messages = [
-      [3000, "host acknowledged."],
-      [7000, "host appears to be moving."],
-      [11000, "host has stopped moving."],
-      [15000, "we have reminded him why he was moving."],
-      [20000, "movement resumed."],
-      [25000, "he's almost there."],
-      [30000, "apparently not."]
-    ];
+  [3000, "host acknowledged"],
+  [7000, "host appears to be moving"],
+  [11000, "host has stopped moving"],
+  [15000, "we have reminded him why he was moving"],
+  [20000, "movement resumed"],
+  [25000, "he's almost there"],
+  [30000, "apparently not"]
+];
 
     messages.forEach(([time, message]) => {
       setTimeout(() => {
