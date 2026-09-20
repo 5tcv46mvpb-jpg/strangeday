@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>strangeday</title>
+  <style>
+  body {
+    margin: 0;
+    background: #1E1E1E;
+    min-height: 100vh;
+    display: flex;
+justify-content: center;
+align-items: center;
+  }
+  .logo {
+  color: #FF9D00;
+ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 56px;
+  font-weight: 500;
+  
+}
+.cursor {
+  animation: blink 1.2s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.word {
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  animation: type 0.8s steps(10, end) forwards;
+}
+
+@keyframes type {
+  from {
+    width: 0;
+  }
+
+  to {
+  width: 4.95em;
+}
+}
+.line {
+  color: #E6E1D8;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  margin: 18px 0 24px;
+}
+.contact {
+  color: #FFD866;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.2s ease;
+}
+.contact:hover {
+  opacity: 0.6;
+}
+main {
+  text-align: center;
+  padding: 24px;
+  
+}
+</style>
+</head
+
+<body>
+<main>
+  <div class="logo">
+  <span class="word">strangeday</span><span class="cursor">_</span>
+</div>
+  <p class="line">Give us eight. We'll handle the rest.</p>
+  <a class="contact" href="mailto:hello@strangeday.space">talk to us</a>
+</main>
+</body>
+</html>
