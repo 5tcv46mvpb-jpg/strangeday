@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>strangeday</title>
+  <style>
+  body {
+    margin: 0;
+    background: #1E1E1E;
+    min-height: 100vh;
+    display: flex;
+justify-content: center;
+align-items: center;
+  }
+
+  .logo {
+  color: #FF9D00;
+ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 56px;
+  font-weight: 500;
+  
+}
+
+.cursor {
+  animation: blink 1.2s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.word {
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  animation: type 0.8s steps(10, end) forwards;
+}
+
+@keyframes type {
+  from {
+    width: 0;
+  }
+
+  to {
+  width: 4.95em;
+}
+}
+
+.line {
+  color: #E6E1D8;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  margin: 18px 0 24px;
+}
+
+.contact {
+  color: #FFD866;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.2s ease;
+}
+.contact:hover {
+  opacity: 0.6;
+}
+
+main {
+  text-align: center;
+  padding: 24px;
+  
+}
+
+.waiting {
+  color: #E6E1D8;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  min-height: 24px;
+  margin-bottom: 24px;
+}
+
+.room {
+  width: 100%;
+  height: 75vh;
+  border: 0;
+}
+
+.waiting {
+  color: #E6E1D8;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  min-height: 24px;
+  margin-bottom: 24px;
+}
+
+.room {
+  width: 100%;
+  height: 75vh;
+  border: 0;
+}
+
+
+</style>
+</head
+
+<body>
+<main>
+  <div class="logo">
+  <span class="word">strangeday</span><span class="cursor">_</span>
+</div>
+  <p class="line">Give us eight. We'll handle the rest.</p>
+  <a class="contact" href="#" onclick="openDoor(event)">talk to us</a>
+</main>
+
+<script>
+  function openDoor(event) {
+    event.preventDefault();
+
+    fetch("https://strangeday-doorbell.g6799vfrr2.workers.dev/", {
+      method: "POST",
+      keepalive: true
+    });
+
+    document.querySelector("main").innerHTML = `
+      <div class="logo">
+        <span>strangeday</span><span class="cursor">_</span>
+      </div>
+
+      <p class="waiting" id="waiting">host notified.</p>
+
+     <iframe
+  class="room"
+  src="https://whereby.com/strangeday"
+  allow="camera; microphone; fullscreen; speaker; display-capture"
+></iframe>
+    `;
+
+    const messages = [
+      [3000, "host acknowledged."],
+      [7000, "host appears to be moving."],
+      [11000, "host has stopped moving."],
+      [15000, "we have reminded him why he was moving."],
+      [20000, "movement resumed."],
+      [25000, "he's almost there."],
+      [30000, "apparently not."]
+    ];
+
+    messages.forEach(([time, message]) => {
+      setTimeout(() => {
+        const waiting = document.getElementById("waiting");
+
+        if (waiting) {
+          waiting.textContent = message;
+        }
+      }, time);
+    });
+  }
+</script>
+</body>
+</html>
